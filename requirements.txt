@@ -1,0 +1,37 @@
+torch>=2.0.0
+torchvision>=0.15.0
+transformers>=4.35.0
+ftfy
+regex
+tqdm
+
+# CLIP
+openai-clip
+
+# Graph Neural Network
+torch-geometric
+
+# Clustering & Dimensionality Reduction
+hdbscan
+umap-learn
+
+# Explainability
+shap
+
+# Data & Utils
+pandas
+numpy
+Pillow
+scikit-learn
+
+# Visualisation
+matplotlib
+seaborn
+plotly
+
+# Notebook
+jupyter
+ipykernel
+
+# Config
+pyyaml
