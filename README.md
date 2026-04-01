@@ -55,7 +55,15 @@ Post (Image + Caption)
 ```
 
 ---
+## 🖼️ Demo
 
+### Misinformation detected
+![Dashboard Fake](assets/dashboard_fake.png)
+
+### Real post — no flag
+![Dashboard Real](assets/dashboard_real.png)
+
+---
 ## 📁 Project Structure
 
 ```
