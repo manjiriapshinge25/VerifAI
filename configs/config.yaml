@@ -1,0 +1,38 @@
+model:
+  clip_model: "ViT-B/32"
+  gnn_hidden_dim: 256
+  gnn_num_layers: 3
+  classifier_hidden_dim: 128
+  dropout: 0.3
+
+clustering:
+  min_cluster_size: 10
+  min_samples: 5
+  metric: "euclidean"
+  umap_n_components: 50
+  umap_n_neighbors: 15
+
+training:
+  batch_size: 64
+  learning_rate: 1e-4
+  epochs: 30
+  weight_decay: 1e-5
+  early_stopping_patience: 5
+
+data:
+  # ── Switch between modes here ──────────────────────────────────
+  # "synthetic" → no real images needed, uses generated data (your current setup)
+  # "real"      → uses a real dataset with actual images
+  mode: "synthetic"
+
+  # Only needed when mode = "real"
+  dataset: "NewsCLIPpings"
+  annotation_path: "data/raw/merged_balanced/train.json"
+  image_dir: "data/raw/images/"
+  max_text_length: 77
+  image_size: 224
+
+paths:
+  model_save: "models/"
+  logs: "logs/"
+  results: "results/"
