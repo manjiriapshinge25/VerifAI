@@ -72,7 +72,7 @@ VerifAI/
 
 ```bash
 # 1. Clone the repo
-git clone https://github.com/YOUR_USERNAME/VerifAI.git
+git clone https://github.com/manjiriapshinge25/VerifAI.git
 cd VerifAI
 
 # 2. Create a virtual environment
@@ -143,8 +143,8 @@ Misinformation datasets are typically imbalanced (more real posts than fake). Fo
 
 ## 👤 Author
 
-**Your Name** · MSc Machine Learning  
-[GitHub](https://github.com/YOUR_USERNAME) · [LinkedIn](https://linkedin.com/in/YOUR_PROFILE)
+**Manjiri Apshinge** · MSc Machine Learning  
+[GitHub](https://github.com/manjiriapshinge25) · [LinkedIn](https://linkedin.com/in/YOUR_PROFILE)
 
 ---
 
