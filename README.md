@@ -10,9 +10,17 @@
 ---
 
 ## 🧠 What is VerifAI?
+## 📌 Introduction
+Social media platforms are flooded with misinformation — false claims paired with real-looking images to appear credible. Traditional detection systems analyse **text only**, missing the crucial visual context that makes fake posts convincing.
+
+VerifAI addresses this gap by treating misinformation detection as a **multimodal problem** — jointly analysing both the image and caption of a post, modelling how it spreads through social networks, and explaining *why* it was flagged.
+
+---
+
+## 🎯 Objective
 
 Most misinformation detectors look at **text only**. VerifAI goes further — it combines:
-- 📷 **Image understanding** via OpenAI CLIP
+- 📷 **Image understanding** via OpenAI CLIP embeddings
 - 📝 **Text understanding** via CLIP's text encoder
 - 🕸️ **Social propagation patterns** via Graph Attention Networks (GAT)
 - 🔍 **Explainability** via SHAP (which words triggered the fake flag?)
@@ -55,7 +63,7 @@ Post (Image + Caption)
 ```
 
 ---
-## 🖥️ Demo
+## 🖥️ Streamlit Demo
 
 ### ❌ Misinformation Detected
 ![Fake 1](assets/dashboard_fake1.png)
@@ -70,10 +78,25 @@ Post (Image + Caption)
 
 ```
 VerifAI/
-├── VerifAI_Synthetic.ipynb   # Complete end-to-end training notebook
-├── requirements.txt           # All dependencies
-├── README.md                  # This file
-└── results/                   # Auto-generated plots & metrics
+├── VerifAI_Synthetic.ipynb    # Complete end-to-end training notebook
+├── dashboard/
+│   └── app.py                 # Streamlit demo dashboard
+├── src/
+│   ├── embeddings/
+│   │   └── clip_embedder.py   # CLIP embedding extraction
+│   ├── clustering/
+│   │   └── narrative_clusterer.py
+│   ├── gnn/
+│   │   └── propagation_gnn.py
+│   ├── classifier/
+│   │   └── verif_classifier.py
+│   └── api/
+│       └── main.py            # FastAPI REST endpoint
+├── configs/
+│   └── config.yaml            # All hyperparameters
+├── assets/                    # Screenshots
+├── requirements.txt
+└── README.md
 ```
 
 ---
@@ -85,15 +108,14 @@ VerifAI/
 git clone https://github.com/manjiriapshinge25/VerifAI.git
 cd VerifAI
 
-# 2. Create a virtual environment
-python -m venv venv
-source venv/bin/activate        # Windows: venv\Scripts\activate
-
-# 3. Install dependencies
+# 2. Install dependencies
 pip install -r requirements.txt
 
-# 4. Open the notebook
+# 3. Open the notebook
 jupyter notebook VerifAI_Synthetic.ipynb
+
+# 4. Run the dashboard
+streamlit run dashboard/app.py
 ```
 
 Then run all cells top to bottom. The notebook takes ~10–15 minutes end to end.
@@ -104,11 +126,12 @@ Then run all cells top to bottom. The notebook takes ~10–15 minutes end to end
 
 | Output | Description |
 |---|---|
-| `results/eda_overview.png` | Dataset label distribution + caption length chart |
-| `results/clusters_umap.png` | 2D visualisation of discovered narrative clusters |
+| `results/eda_overview.png` | Dataset label distribution chart |
+| `results/clusters_umap.png` | 2D visualisation of narrative clusters |
 | `results/training_curves.png` | Loss, F1, AUC over training epochs |
-| `results/ablation_study.png` | Text-only vs Image-only vs Full VerifAI comparison |
-| `models/verifai_best.pt` | Saved best model checkpoint |
+| `results/ablation_study.png` | Component contribution comparison |
+| `results/shap_word_importance.png` | Word-level SHAP explanation chart |
+| `models/verifai_best.pt` | Best saved model checkpoint |
 
 ---
 
