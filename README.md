@@ -10,7 +10,7 @@
 ---
 
 ## 🧠 What is VerifAI?
-## 📌 Introduction
+
 Social media platforms are flooded with misinformation — false claims paired with real-looking images to appear credible. Traditional detection systems analyse **text only**, missing the crucial visual context that makes fake posts convincing.
 
 VerifAI addresses this gap by treating misinformation detection as a **multimodal problem** — jointly analysing both the image and caption of a post, modelling how it spreads through social networks, and explaining *why* it was flagged.
